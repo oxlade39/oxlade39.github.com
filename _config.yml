@@ -1,0 +1,17 @@
+blog_title: 'Coding Addickt'
+nav_items:
+    - Home
+    - Blog
+    - About
+    - Contact
+    
+navigation:
+- text: Home
+  url: /index.html
+- text: Blog
+  url: /blog.html
+  layout: post
+- text: Projects
+  url: /project.html
+- text: About Me
+  url: /aboutMe.html
