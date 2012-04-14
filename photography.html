@@ -1,0 +1,36 @@
+---
+layout: default
+title: Photography
+---
+<div class="row-fluid">
+	<div class="well span3">
+		<p>
+			One of my past times is photography. I enjoy travel and have been lucky enough to see some amazing places 
+			and sites.
+		</p>
+		<p>
+			In November 2008 I took 3 months leave from work to travel around South America, after taking some fantastic pictures on a 		  previous trip to <a href="http://www.flickr.com/photos/danoxlade/sets/72157606118211316/">Australia</a> using a <a href="http://www.flickr.com/cameras/sony/dsc-p73/">Sony DSC-P73</a>, I decided to upgrade to a digital SLR.
+		</p>
+		<p>
+			Being a backpacking holiday I decided on the small and lightweight <a href="http://www.flickr.com/cameras/nikon/d40/">Nikon D40</a>. I'm very pleased with the results which you can find <a href="http://www.flickr.com/photos/danoxlade/collections/72157613245053191/">here</a>.
+		</p>
+		<p>
+			I host all of my (good) photos on <a href="http://www.flickr.com/photos/danoxlade">Flickr</a>.
+		</p>
+	</div>
+	
+	<div class="span8">
+		
+		<ul class="thumbnails">
+			
+			{% for pic in site.flickr.photos %}
+			<li class="span2">
+			    <a href="{{ pic.href }}" class="thumbnail">
+			      <img src="{{ pic.src }}" alt="">
+				</a>
+			</li>
+			{% endfor %}			
+		</ul>
+	</div>
+	
+</div>

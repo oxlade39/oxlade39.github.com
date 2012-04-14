@@ -22,14 +22,7 @@ title: index
 				{% endfor %}
 			</div>
 			<div class="span4">
-				<div class="well">
-					<h3 id="purple">All blogs:</h3>
-					<ul class="recent">
-			  			{% for post in site.posts limit: 7 %}
-			    		<li><a href="{{ post.url }}">{{ post.title }}</a></li>
-			  			{% endfor %}
-					</ul>
-				</div>
+				{% include blog_history.html %}
 			</div>		
 		</div> <!-- // row-fluid -->
 </div>

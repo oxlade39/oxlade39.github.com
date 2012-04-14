@@ -11,7 +11,26 @@ navigation:
 - text: Blog
   url: /blog.html
   layout: post
+- text: Photography
+  url: /photography.html
+  layout: post
 - text: Projects
   url: /project.html
 - text: About Me
   url: /aboutMe.html
+
+flickr:
+ photos:
+     - href: http://www.flickr.com/photos/danoxlade/6309632873/lightbox/
+       src: http://farm7.staticflickr.com/6236/6309632873_99a0205baf.jpg
+     - href: http://www.flickr.com/photos/danoxlade/3319536904/lightbox/
+       src: http://farm4.staticflickr.com/3576/3319536904_2e51135402.jpg     
+     - href: http://www.flickr.com/photos/danoxlade/6335498532/
+       src: http://farm7.staticflickr.com/6054/6335498532_d338df70bb.jpg
+     - href: http://www.flickr.com/photos/danoxlade/3247449773/sizes/m/in/set-72157613276980012/
+       src: http://farm4.staticflickr.com/3124/3247449773_f1bb9ec7f5.jpg
+     - href: http://www.flickr.com/photos/danoxlade/3327177186/in/set-72157614547215593/lightbox/
+       src: http://farm4.staticflickr.com/3632/3327177186_7ffeece3c5.jpg
+     - href: http://www.flickr.com/photos/danoxlade/3238551837/lightbox/
+       src: http://farm4.staticflickr.com/3417/3238551837_3f812c9c0c.jpg
+     
