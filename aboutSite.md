@@ -13,3 +13,7 @@ The site uses [Jekyll](https://github.com/mojombo/jekyll) for static site genera
 ### Blog content
 
 The blog posts contained within this site (oxlade39.github.com/) represent my thoughts alone and can not be attributed to any of my employers past or present.
+
+### Why Addicks
+
+Addicks is the nickname of the football club I support, [Charlton Athletic](http://www.cafc.co.uk/page/Welcome). It also represent how I sometimes feel about my personal projects. There's a certain addictive nature to software, those late nights when you just have to fix that bug before bedtime.
