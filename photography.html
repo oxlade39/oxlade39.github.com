@@ -25,12 +25,16 @@ title: Photography
 			
 			{% for pic in site.flickr.photos %}
 			<li class="span2">
-			    <a href="{{ pic.href }}" class="thumbnail">
-			      <img src="{{ pic.src }}" alt="">
+			    <a href="{{ pic.href }}" class="thumbnail" title="{{ pic.title }}" data-content="{{ pic.description }}">
+			      <img src="{{ pic.src }}" alt="{{ pic.title }}" >
 				</a>
 			</li>
 			{% endfor %}			
 		</ul>
 	</div>
-	
 </div>
+<script type="text/javascript">
+$(function() {
+	$('.thumbnail').popover({placement: 'left'});
+});
+</script>
