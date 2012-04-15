@@ -18,7 +18,9 @@ navigation:
   url: /project.html
 - text: About Me
   url: /aboutMe.html
-
+- text: About This Site
+  url: /aboutSite.html
+    
 flickr:
  photos:
      - href: http://www.flickr.com/photos/danoxlade/6309632873/lightbox/
