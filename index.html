@@ -11,20 +11,20 @@ title: index
 						<div class="well">
 							<h2><a href="{{ first_post.url }}">{{ post.title }}</a></h2>
 			  				<p>{{ post.content | truncate: 450 }}</p>							
+							{% if post.content.size > 450 %}
+							<div class="btn-group">
+				  				<a class="btn" href="{{ post.url }}">
+									Read More &raquo;
+								</a>
+							</div>
+							{% endif %}
 						</div>
-						{% if post.content.size > 450 %}
-						<div class="btn-group">
-			  				<a class="btn" href="{{ post.url }}">
-								Read More &raquo;
-							</a>
-						</div>
-						{% endif %}
 					</div> <!-- // span12 -->
 				</div> <!-- // row-fluid -->
 				{% endfor %}
 			</div>
 			<div class="span4">
 				{% include blog_history.html %}
-			</div>		
+			</div>
 		</div> <!-- // row-fluid -->
 </div>
