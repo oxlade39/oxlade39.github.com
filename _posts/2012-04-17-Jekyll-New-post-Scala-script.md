@@ -1,6 +1,8 @@
 ---
 layout: post
 title: Jekyll New post Scala script
+categories: blogging
+tags: blogging jekyll scala productivity
 ---
 [Jekyll](https://github.com/mojombo/jekyll) requires that you create blog posting in a specific format:
 `_posts/yyyy-MM-dd-post-name`, where the date is the creation date of the post. This is actually quite a nice convention as the metadata can be used in your site generation to do things like group posts my year and month.
