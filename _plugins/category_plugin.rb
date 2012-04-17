@@ -16,7 +16,6 @@ module Jekyll
     priority :high
 
     def generate(site)
-      puts "pages: " + site.pages.collect {|p| p.name + " " }.to_s
       main_cat_page = site.pages.select { |p| p.name == "category.html" }.first
 
       site.categories.each do |cat|
