@@ -3,7 +3,10 @@ layout: default
 title: About Me
 ---
 <div class="span7 well">
-	{% render aboutMe.md %}
+  {% capture about_content %}
+{% include aboutMe.md %}
+  {% endcapture %}
+  {{ about_content | unindent | markdownify }}
 </div>
 <div class="span5">
 	<div class="row-fluid">
