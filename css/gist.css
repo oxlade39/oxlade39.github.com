@@ -31,3 +31,8 @@ div.gist-highlight pre {
   -moz-border-radius-topright: 10px;
   -webkit-border-top-right-radius: 10px;
 }
+
+h2.post {
+  margin-top: -0.5em;
+  padding-bottom: 0.5em;
+}

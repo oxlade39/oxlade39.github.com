@@ -10,10 +10,9 @@ navigation:
   url: /index.html
 - text: Blog
   url: /blog.html
-  layout: post
+  group: blog
 - text: Photography
   url: /photography.html
-  layout: post
 - text: Projects
   url: /project.html
 - text: About Me

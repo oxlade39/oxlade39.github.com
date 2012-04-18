@@ -10,9 +10,10 @@
       <div class="nav-collapse">
 
 		  <ul class="nav">
+			<!-- PAGE_LAYOUT: {{ page.layout }} -->
 		    {% for link in site.navigation %}
 		      {% assign current = nil %}
-		      {% if page.url == link.url or page.layout == link.layout %}
+		      {% if page.url == link.url or (link.group and page.group == link.group) %}
 		        {% assign current = 'active' %}
 		      {% endif %}
 
