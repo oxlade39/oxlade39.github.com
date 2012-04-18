@@ -9,4 +9,6 @@ tags: blogging jekyll scala productivity
 
 However, it's a little cumbersome to have to manually create the file each time. A quick google shows up plenty of alternatives but here's a quick Scala script that I use:
 
-<script src="https://gist.github.com/2404158.js?file=new-post.scala"></script>
+<script src="https://gist.github.com/2404158.js?file=new-post.scala">
+	
+</script>

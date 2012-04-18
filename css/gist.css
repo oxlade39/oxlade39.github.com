@@ -1,3 +1,9 @@
+div.gist-highlight pre {
+  white-space: pre;
+  word-break: normal;
+  word-wrap: normal;	
+}
+
 .gist{
   margin: 15px 0 !important;
 }
