@@ -2,7 +2,7 @@
   task :clean do
     system "rm -fR _site2"
     system "git submodule update"
-    system "cd _site && git checkout . && git clean -d -f"
+    system "cd _site && git checkout master . && git clean -d -f"
   end
   
   desc 'Run the jekyll dev server'
@@ -22,7 +22,7 @@
   end
   
   desc 'commit and push to github'
-  task :deploy, [:commit_message] => :generate do
+  task :deploy, [:commit_message] => :generate do |t, args|
     if args.commit_message
       puts "Committing and pushing with commit message: #{args.commit_message}"
       system "cd _site && git add . && git commit -m \"#{args.commit_message}\" && git push"
