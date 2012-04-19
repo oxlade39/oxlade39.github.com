@@ -26,7 +26,6 @@
     if args.commit_message
       puts "Committing and pushing with commit message: #{args.commit_message}"
       system "cd _site && git add . && git commit -m \"#{args.commit_message}\" && git push"
-      system "git submodule update"
       system "git add _site"
       system "git co -m \"updating submodule reference to master\""
     else
