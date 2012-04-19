@@ -1,11 +1,8 @@
   desc 'Delete generated _site files'
   task :clean do
     system "rm -fR _site2"
-    system "git fetch origin master"
     system "git submodule update"
-    system "cd _site"
-    system "git clean -d -f"
-    system "cd .."
+    system "cd _site && git checkout . && git clean -d -f"
   end
   
   desc 'Run the jekyll dev server'
@@ -28,10 +25,7 @@
   task :deploy, [:commit_message] => :generate do
     if args.commit_message
       puts "Committing and pushing with commit message: #{args.commit_message}"
-      system "cd _site"
-      system "git add ."
-      system "git commit -m \"#{args.commit_message}\""
-      system "git push"
+      system "cd _site && git add . && git commit -m \"#{args.commit_message}\" && git push"
     else
       puts "Missing commit_message"
     end
