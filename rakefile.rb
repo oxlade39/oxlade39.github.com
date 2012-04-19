@@ -2,7 +2,7 @@
   task :clean do
     system "rm -fR _site2"
     system "git submodule update"
-    system "cd _site && git checkout . && git clean -d -f"
+    system "cd _site && git checkout master . && git clean -d -f"
   end
   
   desc 'Run the jekyll dev server'
@@ -26,6 +26,9 @@
     if args.commit_message
       puts "Committing and pushing with commit message: #{args.commit_message}"
       system "cd _site && git add . && git commit -m \"#{args.commit_message}\" && git push"
+      system "git submodule update"
+      system "git add _site"
+      system "git co -m \"updating submodule reference to master\""
     else
       puts "Missing commit_message"
     end
