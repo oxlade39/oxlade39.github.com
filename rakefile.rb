@@ -21,3 +21,16 @@
     system "cp -R _site2/* _site/"
     system "rm -R _site2"
   end
+  
+  desc 'commit and push to github'
+  task :deploy, [:commit_message] => :generate do
+    if args.commit_message
+      puts "Committing and pushing with commit message: #{args.commit_message}"
+      system "cd _site"
+      system "git add ."
+      system "git commit -m \"#{args.commit_message}\""
+      system "git push"
+    else
+      puts "Missing commit_message"
+    end
+  end
