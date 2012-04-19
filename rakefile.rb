@@ -1,6 +1,7 @@
   desc 'Delete generated _site files'
   task :clean do
     system "rm -fR _site2"
+    system "git fetch origin master"
     system "git submodule update"
     system "cd _site"
     system "git clean -d -f"
