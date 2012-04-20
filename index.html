@@ -24,26 +24,10 @@ body {
 	<![endif]-->
 		<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.7.2/jquery.min.js"></script>
 		<!-- Le fav and touch icons -->
-		<link rel="shortcut icon" href="../ico/favicon.ico">
+		<link rel="shortcut icon" href="/img/favicon.ico">
 		<link rel="apple-touch-icon-precomposed" sizes="114x114" href="../ico/apple-touch-icon-114-precomposed.png">
 		<link rel="apple-touch-icon-precomposed" sizes="72x72" href="../ico/apple-touch-icon-72-precomposed.png">
-		<link rel="apple-touch-icon-precomposed" href="../ico/apple-touch-icon-57-precomposed.png">
-		
-		<!-- Analytics -->
-		<script type="text/javascript">
-
-		  var _gaq = _gaq || [];
-		  _gaq.push(['_setAccount', 'UA-30906812-1']);
-		  _gaq.push(['_trackPageview']);
-
-		  (function() {
-		    var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
-		    ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
-		    var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
-		  })();
-
-		</script>		
-		
+		<link rel="apple-touch-icon-precomposed" href="../ico/apple-touch-icon-57-precomposed.png">				
 	</head>
 	<body>
 	</body>
@@ -60,7 +44,7 @@ body {
         <span class="icon-bar"></span>
         <span class="icon-bar"></span>
       </a>
-      <a class="brand" href="/index.html">Coding Addickt</a>
+      <a class="brand" href="/index.html"><img class="logo" src="/img/tulip35.png" />Coding Addickt</a>
       <div class="nav-collapse">
 
 		  <ul class="nav">
@@ -119,10 +103,24 @@ body {
 <div class="row-fluid">
 	<div class="span12">
 		<div class="well">
-			<h2><a href="/blogging/2012/04/17/Jekyll-New-post-Scala-script.html">Jekyll New post Scala script</a></h2>
-			<p><p><a href='https://github.com/mojombo/jekyll'>Jekyll</a> requires that you create blog posting in a specific format: <code>_posts/yyyy-MM-dd-post-name</code>, where the date is the creation date of the post. This is actually quite a nice convention as the metadata can be used in your site generation to do things like group posts my year and month.</p>
+			<h2><a href="/blogging/2012/04/20/Jekyll%2C-Github%2C-Plugins-and-automated-deployment.html">Jekyll, Github, Plugins and automated deployment</a></h2>
+			<p><p><a href='https://github.com/mojombo/jekyll'>Jekyll</a> provides extension points via <a href='https://github.com/mojombo/jekyll/wiki/Plugins'>plugins</a>. Allowing you to create custom content and enrich the document generation model.</p> <p>Unfortunately if you&#8217;re deploying your site to <a href='http://pages.github.com/'>Github pages</a> these plugins aren&#8217;t supported. Specifically, Github generates your site using the <code>--safe</code> Jekyll <a href='https://github.com/mojombo/jekyll/wiki/Configuration'>configuration</a> flag.</p> <p>I found a couple...</p>							
+			
+			<div class="btn-group">
+  				<a class="btn btn-primary btn-mini" href="/blogging/2012/04/20/Jekyll%2C-Github%2C-Plugins-and-automated-deployment.html">
+					Read More &rarr;
+				</a>
+			</div>
+			
+		</div>
+	</div> <!-- // span12 -->
+</div> <!-- // row-fluid -->
 
-<p>However, it&#8217;s a little cumbersome to have to manually create the file each time. A...</p>							
+<div class="row-fluid">
+	<div class="span12">
+		<div class="well">
+			<h2><a href="/blogging/2012/04/17/Jekyll-New-post-Scala-script.html">Jekyll New post Scala script</a></h2>
+			<p><p><a href='https://github.com/mojombo/jekyll'>Jekyll</a> requires that you create blog posting in a specific format: <code>_posts/yyyy-MM-dd-post-name</code>, where the date is the creation date of the post. This is actually quite a nice convention as the metadata can be used in your site generation to do things like group posts my year and month.</p>...</p>							
 			
 			<div class="btn-group">
   				<a class="btn btn-primary btn-mini" href="/blogging/2012/04/17/Jekyll-New-post-Scala-script.html">
@@ -154,6 +152,8 @@ body {
 	<h3 id="purple">All blogs:</h3>
 	<ul class="recent">
 		
+		<li><a href="/blogging/2012/04/20/Jekyll%2C-Github%2C-Plugins-and-automated-deployment.html">Jekyll, Github, Plugins and automated deployment</a></li>
+		
 		<li><a href="/blogging/2012/04/17/Jekyll-New-post-Scala-script.html">Jekyll New post Scala script</a></li>
 		
 		<li><a href="/2012/04/10/test-blog.html">First post</a></li>
@@ -169,7 +169,7 @@ body {
 	<ul>
 		
 		<li>
-			<a href="/category/blogging">blogging</a> (1)
+			<a href="/category/blogging">blogging</a> (2)
 		</li>
 		
 	</ul>
@@ -188,5 +188,19 @@ body {
 	<script src="/js/bootstrap.js"></script>
     <script src="/js/bootstrap-tooltip.js"></script>
     <script src="/js/bootstrap-popover.js"></script>
+	<!-- Analytics -->
+	<script type="text/javascript">
+
+	  var _gaq = _gaq || [];
+	  _gaq.push(['_setAccount', 'UA-30906812-1']);
+	  _gaq.push(['_trackPageview']);
+
+	  (function() {
+	    var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+	    ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+	    var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+	  })();
+
+	</script>
   </body>
 </html>
