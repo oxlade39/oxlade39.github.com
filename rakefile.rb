@@ -7,7 +7,7 @@
   
   desc 'Run the jekyll dev server'
   task :server do
-    system "jekyll --server --auto"
+    system "jekyll --server"
   end
   
   desc 'Clean temporary files and run the server'
