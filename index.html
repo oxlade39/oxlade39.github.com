@@ -10,8 +10,8 @@ title: index
 			<p>{{ post.content | truncate: 450 }}</p>							
 			{% if post.content.size > 450 %}
 			<div class="btn-group">
-  				<a class="btn" href="{{ post.url }}">
-					Read More &raquo;
+  				<a class="btn btn-primary btn-mini" href="{{ post.url }}">
+					Read More &rarr;
 				</a>
 			</div>
 			{% endif %}

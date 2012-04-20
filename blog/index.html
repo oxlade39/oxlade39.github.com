@@ -1,0 +1,12 @@
+---
+layout: default
+title: Blog posts
+---
+{% for post in paginator.posts %}
+	<div class="row-fluid">	
+		<div class="span5">
+			<h4><a href="{{ page.url }}">{{ post.title }}</a></h4>
+			<span class="badge">{{ post.date | date_to_string }}</span>
+		</div>
+	</div> <!-- // end post layout -->
+{% endfor %}
