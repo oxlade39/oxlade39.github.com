@@ -1,17 +1,35 @@
+  require 'erb'
+  
   desc 'Delete generated _site files'
   task :clean do
+    system "if _config.yml then rm _config.yml"
     system "rm -fR _site2"
     system "git submodule update"
     system "cd _site && git checkout master . && git clean -d -f"
   end
   
+  desc 'Create the _config.yml file from the erb template'
+  task :create_conf, [:mode] => :clean do |t, args|
+    args.with_defaults(:mode => "1")
+    
+    output_file='_config.yml'
+    input_file='_config.yml.erb'
+    
+    template = ERB.new(File.read(input_file))
+    
+    File.open(output_file, "w+") do |f|
+      f.write(template.result(binding))
+    end
+  end
+  
   desc 'Run the jekyll dev server'
-  task :server do
+  task :server => :create_conf do
     system "jekyll --server"
   end
   
   desc 'Clean temporary files and run the server'
-  task :compile => :clean do
+  task :compile do
+    task(:create_conf).invoke("0")
     system "jekyll"
   end
 
