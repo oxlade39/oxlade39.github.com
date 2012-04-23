@@ -27,13 +27,13 @@ As you can see it takes a type parameter, has a name and (optional) description.
 val createOstrichDist: TaskKey[File] = TaskKey[File]("create-ostrich-dist",
    	"Create an Ostrich compatable distribution zip")
 {% endhighlight %}
-This is where your plugin will do the meat of it's work. For example, my plugin - as defined above - creates a zip file in a specific layout that allows me to bootstrap a typical [Ostrich](https://github.com/twitter/ostrich) configuration application.
+This is where your plugin will do the meat of it's work. For example, my plugin - as defined above - creates a zip file in a specific layout that allows me to bootstrap a typical [Ostrich](https://github.com/twitter/ostrich) configured application.
 
 ### Your plugin definition
 Plugin definitions are built with the rest of your project code, they live in the same place; usually `src/main/scala/` and are `object`s that extend `sbt.Plugin`. Any `TaskKey`s or `SettingKey`s you place in this object will be available to users of your plugin.
 
 ### My struggles
-I have to say, I found getting started with writing an SBT plugin to be extremely frustrating. Looking back I'm not entirely sure why. I think it was probably mainly because of a lack of documentation. 
+I have to say, I found getting started with writing an SBT plugin to be extremely frustrating. Looking back I'm not entirely sure why. I think it was mainly because of a lack of documentation. 
 
 It's easy enough to create a plugin task that prints 'Hello world' but to interact and manipulate the existing build lifecycle was hard.
 
