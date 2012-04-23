@@ -1,6 +1,7 @@
 dev_mode: '1'
 destination: '_site2'
 paginate: 20
+pygments: true
 blog_title: 'Coding Addickt'
 nav_items:
     - Home
