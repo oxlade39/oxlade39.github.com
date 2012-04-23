@@ -13,7 +13,7 @@ Plugins are written in Scala and take exactly the same form as any other SBT pro
 
 ### Key components...
 ...Pun intended.
-They are `SettingKey`, `TaskKey` and `InputKey`. I haven't used `InputKey` so I won't be talking about there here. 
+They are `SettingKey`, `TaskKey` and `InputKey`. I haven't used `InputKey` so I won't be talking about them here. 
 
 A `SettingKey` is really just a placeholder for a named configuration parameter for your plugin. It looks like this:
 {% highlight scala %}
@@ -27,17 +27,17 @@ As you can see it takes a type parameter, has a name and (optional) description.
 val createOstrichDist: TaskKey[File] = TaskKey[File]("create-ostrich-dist",
    	"Create an Ostrich compatable distribution zip")
 {% endhighlight %}
-This is where your plugin will do the meat of it's work. For example, my plugin as defined above; creates a zip file in a specific layout that allows me to bootstrap a typical [Ostrich](https://github.com/twitter/ostrich) configuration application.
+This is where your plugin will do the meat of it's work. For example, my plugin - as defined above - creates a zip file in a specific layout that allows me to bootstrap a typical [Ostrich](https://github.com/twitter/ostrich) configuration application.
 
 ### Your plugin definition
 Plugin definitions are built with the rest of your project code, they live in the same place; usually `src/main/scala/` and are `object`s that extend `sbt.Plugin`. Any `TaskKey`s or `SettingKey`s you place in this object will be available to users of your plugin.
 
 ### My struggles
-I have to say; I found getting started with writing an SBT plugin to be extremely frustrating. Looking back I'm not entirely sure why. I think it was probably mainly because of a lack of documentation. 
+I have to say, I found getting started with writing an SBT plugin to be extremely frustrating. Looking back I'm not entirely sure why. I think it was probably mainly because of a lack of documentation. 
 
-It's easy enough to create a plugin task to print 'Hello world' but to interact and manipulate the existing build lifecycle was hard.
+It's easy enough to create a plugin task that prints 'Hello world' but to interact and manipulate the existing build lifecycle was hard.
 
-Understanding the built-in `TaskKey`s and `SettingKey`s and where and how my plugin task should fit in was my main issue. I went through several frustrating hours looping through defining my plugin, firing up `./sbt` and running `inspect package` or `inspect my-task`. -Running `instpect $taskname` from the SBT console prints out information on that task/setting, it's dependencies, dependents etc etc.-
+Understanding the built-in `TaskKey`s and `SettingKey`s and where and how my plugin task should fit in was my main issue. I went through several frustrating hours looping through defining my plugin, firing up `./sbt` and running `inspect package` or `inspect my-task`. Running `inspect $taskname` from the SBT console prints out information on that task/setting, it's dependencies, dependents and more.
 
 The key turning point for me was fully appreciating the following:
 - Operations on `SettingKey`s and `TaskKey`s return definitions of the `Project.Setting[_]` or `Project.Setting[Task[_]]` respectively. See [here](https://github.com/harrah/xsbt/wiki/Getting-Started-More-About-Settings)
