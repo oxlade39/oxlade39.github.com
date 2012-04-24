@@ -13,7 +13,7 @@ Plugins are written in Scala and take exactly the same form as any other SBT pro
 
 ### Key components...
 ...Pun intended.
-They are `SettingKey`, `TaskKey` and `InputKey`. I haven't used `InputKey` so I won't be talking about them here. 
+They are: `SettingKey`, `TaskKey` and `InputKey`. I haven't used `InputKey` so I won't be talking about them here. 
 
 A `SettingKey` is really just a placeholder for a named configuration parameter for your plugin. It looks like this:
 {% highlight scala %}
@@ -42,7 +42,7 @@ Understanding the built-in `TaskKey`s and `SettingKey`s and where and how my plu
 The key turning point for me was fully appreciating the following:
 - Operations on `SettingKey`s and `TaskKey`s return definitions of the `Project.Setting[_]` or `Project.Setting[Task[_]]` respectively. See [here](https://github.com/harrah/xsbt/wiki/Getting-Started-More-About-Settings)
 - `Project.Setting` values are [scoped](https://github.com/harrah/xsbt/wiki/Getting-Started-Scopes), to a project, configuration (`Compile`, `Test`, or `Runtime`) or to a task. This means `sources in Compile` is different to `sources in Test`
-- And, related to above, a project's settings are defined by a `Seq` of these `Project.Setting[_]` or `Project.Setting[Task[_]]`s. For me, this point boils down to the fact the your plugin just needs to be a sequence of operations on `TaskKey`s or `SettingKey`s. For example:
+- And, related to above, a project's settings are defined by a `Seq` of these `Project.Setting[_]` or `Project.Setting[Task[_]]`s. For me, this point boils down to the fact that your plugin just needs to be a sequence of operations on `TaskKey`s or `SettingKey`s. For example:
 {% highlight scala %}
 val ostrichDistSettings = Seq(
     target in createOstrichDist ~= {value: File => value / "ostrich-dist"},
@@ -58,7 +58,18 @@ val ostrichDistSettings = Seq(
     }
 )
 {% endhighlight %}
+This would define two project settings (one standard setting and one task) scoped to the new `createOrstrichDist` task. This just means you don't screw up settings in the standard build or other plugins. It helped me to think of my plugin in terms of a typical build cycle. What are it's inputs (`sources`), it's generated sources (`unmanagedResources`) and it's output (`artifact`).
 
 ### Using your plugin to build your plugin
+If, like me, your head explodes on dealing with anything recursive then this is quite confusing but it's possible with SBT.
 
-### Key take homes
+Say you're writing a plugin to automate document generation from your tests, you're probably going to want to generate documentation for the plugin itself. If you want to understand why this works you should read [this](https://github.com/harrah/xsbt/wiki/Getting-Started-Full-Def) otherwise just add this to `./project/plugins.sbt` __not__ `./build.sbt`:
+{% highlight scala %}
+unmanagedSourceDirectories in Compile <+= baseDirectory.apply(_ / ".." / "src" / "main" / "scala")
+{% endhighlight %}
+Then reference your plugin from your `build.sbt` like you would if you were depending on a plugin normally.
+
+### Summary
+Writing an SBT plugin isn't simple but have you ever tried to write a Maven plugin? and remember writing jelly script for Maven 1? If you work out the basics of [scoping](https://github.com/harrah/xsbt/wiki/Getting-Started-Scopes), [settings](https://github.com/harrah/xsbt/wiki/Getting-Started-More-About-Settings) and existing build settings you'll be fine.
+
+I decided to write this after writing [a plugin to create binary distributions](https://github.com/oxlade39/ostrich-dist-plugin) for another project I'm working on. Have a look through the [source](https://github.com/oxlade39/ostrich-dist-plugin)
