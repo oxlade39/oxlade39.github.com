@@ -1,0 +1,272 @@
+<!DOCTYPE html>
+<html lang="en">
+
+  <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01//EN">
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title>
+			Coding Addickt
+		</title>
+		<meta name="viewport" content="width=device-width, initial-scale=1.0">
+		<meta name="description" content="Dan Oxlade's blog">
+		<meta name="author" content="Dan Oxlade"><!-- Le styles -->
+		<link href="/css/bootstrap.css" rel="stylesheet" type="text/css">
+		<link href="/css/gist.css" rel="stylesheet" type="text/css">
+		<link href="/css/syntax.css" rel="stylesheet" type="text/css">
+		<style type="text/css">
+body {
+		padding-top: 60px; /* 60px to make the container go all the way to the bottom of the topbar */
+		}
+		</style>
+		<link href="/css/bootstrap-responsive.min.css" rel="stylesheet" type="text/css"><!-- Le HTML5 shim, for IE6-8 support of HTML5 elements -->
+		<!--[if lt IE 9]>
+	  <script src="http://html5shim.googlecode.com/svn/trunk/html5.js"></script>
+	<![endif]-->
+		<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.7.2/jquery.min.js"></script>
+		<!-- Le fav and touch icons -->
+		<link rel="shortcut icon" href="/img/favicon.ico">
+		<link rel="apple-touch-icon-precomposed" sizes="114x114" href="../ico/apple-touch-icon-114-precomposed.png">
+		<link rel="apple-touch-icon-precomposed" sizes="72x72" href="../ico/apple-touch-icon-72-precomposed.png">
+		<link rel="apple-touch-icon-precomposed" href="../ico/apple-touch-icon-57-precomposed.png">				
+	</head>
+	<body>
+	</body>
+</html>
+
+ 
+  <body>
+
+    <div class="navbar navbar-fixed-top">
+  <div class="navbar-inner">
+    <div class="container">
+      <a class="btn btn-navbar" data-toggle="collapse" data-target=".nav-collapse">
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+      </a>
+      <a class="brand" href="/index.html"><img class="logo" src="/img/tulip35.png" />Coding Addickt</a>
+      <div class="nav-collapse">
+
+		  <ul class="nav">
+			<!-- PAGE_LAYOUT: default -->
+		    
+		      
+		      
+
+		      <li class="">
+		        <a href="/index.html">Home</a>
+		      </li>
+		    
+		      
+		      
+		        
+		      
+
+		      <li class="active">
+		        <a href="/blog/index.html">Blog</a>
+		      </li>
+		    
+		      
+		      
+
+		      <li class="">
+		        <a href="/photography.html">Photography</a>
+		      </li>
+		    
+		      
+		      
+
+		      <li class="">
+		        <a href="/aboutMe.html">About Me</a>
+		      </li>
+		    
+		      
+		      
+
+		      <li class="">
+		        <a href="/aboutSite.html">About This Site</a>
+		      </li>
+		    
+		  </ul>
+
+      </div><!--/.nav-collapse -->
+    </div>
+  </div>
+</div>
+	
+	<div class="container-fluid">
+		<div class="row-fluid">
+			<div class="span12">
+				<div class="row-fluid">
+	<div class="span8">
+		<div class="row-fluid">	
+	<div class="span11 well">
+		<h2 class="post">Writing an sbt 0.11.x plugin</h1>
+		<div><h3 id='sbt'>SBT</h3>
+
+<p><a href='https://github.com/harrah/xsbt/wiki'>SBT</a> is a build tool for Scala and Java, think maven and ivy without all that nasty XML and plenty of Scala goodness.</p>
+
+<h3 id='plugins'>Plugins</h3>
+
+<p>Like Maven, SBT can be customised by adding <a href='https://github.com/harrah/xsbt/wiki/Plugins'>plugins</a>. I&#8217;d highly recommend reading the documentation <a href='https://github.com/harrah/xsbt/wiki/Plugins'>here</a> before continuing on.</p>
+
+<p>Plugins are written in Scala and take exactly the same form as any other SBT project. The only real difference in your project build file is the line <code>sbtPlugin := true</code> which tells SBT that this will be a plugin.</p>
+
+<h3 id='key_components'>Key components&#8230;</h3>
+
+<p>&#8230;Pun intended. They are: <code>SettingKey</code>, <code>TaskKey</code> and <code>InputKey</code>. I haven&#8217;t used <code>InputKey</code> so I won&#8217;t be talking about them here.</p>
+
+<p>A <code>SettingKey</code> is really just a placeholder for a named configuration parameter for your plugin. It looks like this:</p>
+<div class='highlight'><pre><code class='scala'><span class='k'>val</span> <span class='n'>githubPagesCheckoutDir</span><span class='k'>:</span> <span class='kt'>SettingKey</span><span class='o'>[</span><span class='kt'>File</span><span class='o'>]</span> <span class='k'>=</span> <span class='nc'>SettingKey</span><span class='o'>[</span><span class='kt'>File</span><span class='o'>](</span><span class='s'>&quot;gh-pages-dir&quot;</span><span class='o'>,</span>
+		<span class='s'>&quot;The location of checkout out gh-pages to use for deploying to&quot;</span><span class='o'>)</span>
+</code></pre>
+</div>
+<p>As you can see it takes a type parameter, has a name and (optional) description. This just defines the placeholder and allows it to be overridden by clients of your plugin. It should be given a value and referenced later in your plugin. Usually by a <code>TaskKey</code>.</p>
+
+<p><code>TaskKey</code> is a placeholder for a build task, it also has a name and an optional description:</p>
+<div class='highlight'><pre><code class='scala'><span class='k'>val</span> <span class='n'>createOstrichDist</span><span class='k'>:</span> <span class='kt'>TaskKey</span><span class='o'>[</span><span class='kt'>File</span><span class='o'>]</span> <span class='k'>=</span> <span class='nc'>TaskKey</span><span class='o'>[</span><span class='kt'>File</span><span class='o'>](</span><span class='s'>&quot;create-ostrich-dist&quot;</span><span class='o'>,</span>
+   	<span class='s'>&quot;Create an Ostrich compatable distribution zip&quot;</span><span class='o'>)</span>
+</code></pre>
+</div>
+<p>This is where your plugin will do the meat of it&#8217;s work. For example, my plugin - as defined above - creates a zip file in a specific layout that allows me to bootstrap a typical <a href='https://github.com/twitter/ostrich'>Ostrich</a> configured application.</p>
+
+<h3 id='your_plugin_definition'>Your plugin definition</h3>
+
+<p>Plugin definitions are built with the rest of your project code, they live in the same place; usually <code>src/main/scala/</code> and are <code>object</code>s that extend <code>sbt.Plugin</code>. Any <code>TaskKey</code>s or <code>SettingKey</code>s you place in this object will be available to users of your plugin.</p>
+
+<h3 id='my_struggles'>My struggles</h3>
+
+<p>I have to say, I found getting started with writing an SBT plugin to be extremely frustrating. Looking back I&#8217;m not entirely sure why. I think it was mainly because of a lack of documentation.</p>
+
+<p>It&#8217;s easy enough to create a plugin task that prints &#8216;Hello world&#8217; but to interact and manipulate the existing build lifecycle was hard.</p>
+
+<p>Understanding the built-in <code>TaskKey</code>s and <code>SettingKey</code>s and where and how my plugin task should fit in was my main issue. I went through several frustrating hours looping through defining my plugin, firing up <code>./sbt</code> and running <code>inspect package</code> or <code>inspect my-task</code>. Running <code>inspect $taskname</code> from the SBT console prints out information on that task/setting, it&#8217;s dependencies, dependents and more.</p>
+
+<p>The key turning point for me was fully appreciating the following:</p>
+
+<ul>
+<li>Operations on <code>SettingKey</code>s and <code>TaskKey</code>s return definitions of the <code>Project.Setting[_]</code> or <code>Project.Setting[Task[_]]</code> respectively. See <a href='https://github.com/harrah/xsbt/wiki/Getting-Started-More-About-Settings'>here</a></li>
+
+<li><code>Project.Setting</code> values are <a href='https://github.com/harrah/xsbt/wiki/Getting-Started-Scopes'>scoped</a>, to a project, configuration (<code>Compile</code>, <code>Test</code>, or <code>Runtime</code>) or to a task. This means <code>sources in Compile</code> is different to <code>sources in Test</code></li>
+
+<li>And, related to above, a project&#8217;s settings are defined by a <code>Seq</code> of these <code>Project.Setting[_]</code> or <code>Project.Setting[Task[_]]</code>s. For me, this point boils down to the fact that your plugin just needs to be a sequence of operations on <code>TaskKey</code>s or <code>SettingKey</code>s. For example:</li>
+</ul>
+<div class='highlight'><pre><code class='scala'><span class='k'>val</span> <span class='n'>ostrichDistSettings</span> <span class='k'>=</span> <span class='nc'>Seq</span><span class='o'>(</span>
+    <span class='n'>target</span> <span class='n'>in</span> <span class='n'>createOstrichDist</span> <span class='o'>~=</span> <span class='o'>{</span><span class='n'>value</span><span class='k'>:</span> <span class='kt'>File</span> <span class='o'>=&gt;</span> <span class='n'>value</span> <span class='o'>/</span> <span class='s'>&quot;ostrich-dist&quot;</span><span class='o'>},</span>
+
+    <span class='n'>sources</span> <span class='n'>in</span> <span class='n'>createOstrichDist</span> <span class='o'>&lt;&lt;=</span> <span class='o'>(</span><span class='n'>baseDirectory</span> <span class='n'>in</span> <span class='nc'>Compile</span><span class='o'>)</span> <span class='n'>map</span> <span class='o'>{</span>
+      <span class='o'>(</span><span class='n'>bd</span><span class='k'>:</span> <span class='kt'>File</span><span class='o'>)</span> <span class='k'>=&gt;</span>
+        <span class='k'>val</span> <span class='n'>configSrc</span> <span class='k'>=</span> <span class='n'>bd</span> <span class='o'>/</span> <span class='s'>&quot;config&quot;</span>
+        <span class='k'>val</span> <span class='n'>webappSrc</span><span class='k'>:</span> <span class='kt'>Seq</span><span class='o'>[</span><span class='kt'>File</span><span class='o'>]</span> <span class='k'>=</span> <span class='o'>(</span><span class='n'>bd</span> <span class='o'>/</span> <span class='s'>&quot;src/main/webapp&quot;</span><span class='o'>)</span> <span class='k'>match</span> <span class='o'>{</span>
+          <span class='k'>case</span> <span class='n'>f</span><span class='k'>:</span> <span class='kt'>File</span> <span class='kt'>if</span> <span class='kt'>f.exists</span><span class='o'>()</span> <span class='o'>=&gt;</span> <span class='nc'>Seq</span><span class='o'>(</span><span class='n'>f</span><span class='o'>)</span>
+          <span class='k'>case</span> <span class='k'>_</span> <span class='k'>=&gt;</span> <span class='nc'>Seq</span><span class='o'>[</span><span class='kt'>File</span><span class='o'>]()</span>
+        <span class='o'>}</span>
+        <span class='nc'>Seq</span><span class='o'>[</span><span class='kt'>File</span><span class='o'>](</span><span class='n'>configSrc</span><span class='o'>)</span> <span class='o'>++</span> <span class='n'>webappSrc</span>
+    <span class='o'>}</span>
+<span class='o'>)</span>
+</code></pre>
+</div>
+<p>This would define two project settings (one standard setting and one task) scoped to the new <code>createOrstrichDist</code> task. This just means you don&#8217;t screw up settings in the standard build or other plugins.</p>
+
+<p>It helped me to think of my plugin in terms of a typical build cycle. What are it&#8217;s inputs (<code>sources</code>), it&#8217;s generated sources (<code>unmanagedResources</code>) and it&#8217;s output (<code>artifact</code>).</p>
+
+<h3 id='using_your_plugin_to_build_your_plugin'>Using your plugin to build your plugin</h3>
+
+<p>If, like me, your head explodes on dealing with anything recursive then this is quite confusing but it is possible with SBT.</p>
+
+<p>Say you&#8217;re writing a plugin to automate document generation from your tests, you&#8217;re probably going to want to generate documentation for the plugin itself. If you want to understand why this works you should read <a href='https://github.com/harrah/xsbt/wiki/Getting-Started-Full-Def'>this</a> otherwise just add this to <code>./project/plugins.sbt</code> <strong>not</strong> <code>./build.sbt</code>:</p>
+<div class='highlight'><pre><code class='scala'><span class='n'>unmanagedSourceDirectories</span> <span class='n'>in</span> <span class='nc'>Compile</span> <span class='o'>&lt;+=</span> <span class='n'>baseDirectory</span><span class='o'>.</span><span class='n'>apply</span><span class='o'>(</span><span class='k'>_</span> <span class='o'>/</span> <span class='s'>&quot;..&quot;</span> <span class='o'>/</span> <span class='s'>&quot;src&quot;</span> <span class='o'>/</span> <span class='s'>&quot;main&quot;</span> <span class='o'>/</span> <span class='s'>&quot;scala&quot;</span><span class='o'>)</span>
+</code></pre>
+</div>
+<p>Then reference your plugin from your <code>build.sbt</code> like you would if you were depending on a plugin normally.</p>
+
+<h3 id='summary'>Summary</h3>
+
+<p>Writing an SBT plugin isn&#8217;t simple but have you ever tried to write a Maven plugin? and remember writing jelly script for Maven 1? If you work out the basics of <a href='https://github.com/harrah/xsbt/wiki/Getting-Started-Scopes'>scoping</a>, <a href='https://github.com/harrah/xsbt/wiki/Getting-Started-More-About-Settings'>settings</a> and existing build settings you&#8217;ll be fine.</p>
+
+<p>I decided to write this post after writing <a href='https://github.com/oxlade39/ostrich-dist-plugin'>a plugin to create binary distributions</a> for another project I&#8217;m working on. Have a look through the <a href='https://github.com/oxlade39/ostrich-dist-plugin'>source</a></p></div>	
+	</div>
+</div> <!-- // end post layout -->
+<div class="row-fluid">
+	<div class="span11">
+		        <div id="disqus_thread"></div>
+        <script type="text/javascript">
+            /* * * CONFIGURATION VARIABLES: EDIT BEFORE PASTING INTO YOUR WEBPAGE * * */
+          var disqus_developer = 0; // 1 = developer mode is on
+          var disqus_identifier = '/2012/04/23/Writing-an-sbt-plugin.html';
+          var disqus_shortname = 'codingaddickt';
+          (function() {
+              var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+              dsq.src = 'http://' + disqus_shortname + '.disqus.com/embed.js';
+              (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+          })();
+        </script>
+        <noscript>Please enable JavaScript to view the <a href="http://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+        <a href="http://disqus.com" class="dsq-brlink">blog comments powered by <span class="logo-disqus">Disqus</span></a>
+
+	</div>
+</div>
+	</div>
+	<div class="span4">
+		<div class="row-fluid">
+			<div class="span12">
+			<div class="well">
+	<h3 id="purple">All blogs:</h3>
+	<ul class="recent">
+		
+		<li><a href="/2012/04/23/Writing-an-sbt-plugin.html">Writing an sbt 0.11.x plugin</a></li>
+		
+		<li><a href="/blogging/2012/04/20/Jekyll%2C-Github%2C-Plugins-and-automated-deployment.html">Jekyll, Github, Plugins and automated deployment</a></li>
+		
+		<li><a href="/blogging/2012/04/17/Jekyll-New-post-Scala-script.html">Jekyll New post Scala script</a></li>
+		
+		<li><a href="/2012/04/10/test-blog.html">First post</a></li>
+		
+	</ul>
+</div>
+			</div>
+		</div>
+		<div class="row-fluid">
+			<div class="span12">
+			<div class="well">
+	<h3>Categories</h3>
+	<ul>
+		
+		<li>
+			<a href="/category/blogging">blogging</a> (2)
+		</li>
+		
+	</ul>
+</div>
+			</div>
+		</div>
+	</div>
+</div> <!-- // row-fluid -->
+			</div>
+		</div>
+	</div>		      	
+
+    <!-- Le javascript
+    ================================================== -->
+    <!-- Placed at the end of the document so the pages load faster -->
+	<script src="/js/bootstrap.js"></script>
+    <script src="/js/bootstrap-tooltip.js"></script>
+    <script src="/js/bootstrap-popover.js"></script>
+	<!-- Analytics -->
+	        <script type="text/javascript">
+
+      	  var _gaq = _gaq || [];
+      	  _gaq.push(['_setAccount', 'UA-30906812-1']);
+      	  _gaq.push(['_trackPageview']);
+
+      	  (function() {
+      	    var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+      	    ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+      	    var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+      	  })();
+
+      	</script>
+
+  </body>
+</html>
