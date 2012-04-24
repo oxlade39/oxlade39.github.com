@@ -58,10 +58,12 @@ val ostrichDistSettings = Seq(
     }
 )
 {% endhighlight %}
-This would define two project settings (one standard setting and one task) scoped to the new `createOrstrichDist` task. This just means you don't screw up settings in the standard build or other plugins. It helped me to think of my plugin in terms of a typical build cycle. What are it's inputs (`sources`), it's generated sources (`unmanagedResources`) and it's output (`artifact`).
+This would define two project settings (one standard setting and one task) scoped to the new `createOrstrichDist` task. This just means you don't screw up settings in the standard build or other plugins. 
+
+It helped me to think of my plugin in terms of a typical build cycle. What are it's inputs (`sources`), it's generated sources (`unmanagedResources`) and it's output (`artifact`).
 
 ### Using your plugin to build your plugin
-If, like me, your head explodes on dealing with anything recursive then this is quite confusing but it's possible with SBT.
+If, like me, your head explodes on dealing with anything recursive then this is quite confusing but it is possible with SBT.
 
 Say you're writing a plugin to automate document generation from your tests, you're probably going to want to generate documentation for the plugin itself. If you want to understand why this works you should read [this](https://github.com/harrah/xsbt/wiki/Getting-Started-Full-Def) otherwise just add this to `./project/plugins.sbt` __not__ `./build.sbt`:
 {% highlight scala %}
@@ -72,4 +74,4 @@ Then reference your plugin from your `build.sbt` like you would if you were depe
 ### Summary
 Writing an SBT plugin isn't simple but have you ever tried to write a Maven plugin? and remember writing jelly script for Maven 1? If you work out the basics of [scoping](https://github.com/harrah/xsbt/wiki/Getting-Started-Scopes), [settings](https://github.com/harrah/xsbt/wiki/Getting-Started-More-About-Settings) and existing build settings you'll be fine.
 
-I decided to write this after writing [a plugin to create binary distributions](https://github.com/oxlade39/ostrich-dist-plugin) for another project I'm working on. Have a look through the [source](https://github.com/oxlade39/ostrich-dist-plugin)
+I decided to write this post after writing [a plugin to create binary distributions](https://github.com/oxlade39/ostrich-dist-plugin) for another project I'm working on. Have a look through the [source](https://github.com/oxlade39/ostrich-dist-plugin)
