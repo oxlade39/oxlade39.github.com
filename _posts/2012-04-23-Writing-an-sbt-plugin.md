@@ -1,6 +1,8 @@
 ---
 layout: post
 title: Writing an sbt 0.11.x plugin
+categories: productivity
+tags: scala sbt productivity build maven ivy lessons
 ---
 
 ### SBT

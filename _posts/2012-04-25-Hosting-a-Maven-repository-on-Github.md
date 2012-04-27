@@ -1,6 +1,8 @@
 ---
 layout: post
 title: Hosting a Maven repository on Github
+categories: productivity
+tags: scala sbt productivity build maven ivy lessons github
 ---
 ### Host your own
 There seem to be a few options open to you if you want to share your maven/ivy managed dependency. I'd quite like the simplicity of having my own repository. Since most of my development is done on [github](github.com) I'd like to host my maven repository there.
