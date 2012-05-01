@@ -49,15 +49,44 @@ When you pair you work very closely. You're sat at the same desk side by side, a
 ### Personal space
 Personal space is something you have to be very careful and considerate of and there are no hard and fast guidelines.
 
+The best advice I can give is to be mindful at all times. Keep a check on where you're positioned at the desk and ensure you're not encroaching.
+
 ### Personal habits
 Some personal habits can be extremely irritating to a pair I'm thinking nose picking and nail biting. Yes those bits do fall between the __shared__ keyboard.
+
+These are awkward subjects to broach but you just have to mention it. Don't let it build up.
 
 ### Shy
 Everyone has a different level of communication skill. Not everyone is as forthcoming with their opinion as they could be, some are a little too forthcoming. It's all too easy for a quiet person to get detached from the driver and the longer it lasts the more detached (and probably frustrated) they become.
 
+The most important aspect of pairing is the communication, so talk a lot. Make sure the conversation flows. If you're driving and your pair hasn't spoken for a while, ask them what they think about what you're doing. If you are the navigator then ask the driver what they are thinking, how are they intending to solve the current task at hand.
+
 ### Outbursts
-With differences of opinion, strategy or implementation comes frustration. Outbursts and stern arguments can happen.
-- Attention span
+With differences of opinion, strategy or implementation comes frustration. Outbursts and stern arguments can happen. If these are happening frequently then your team has some problems and they should be addressed. It's always better to talk things through wherever possible.
+
+In my time pairing I have one very memorably experience. It changed the way I thought about conducting myself at work, changed my attitude to pairing and knocked my confidence.
+
+I was pairing on a brand new piece of work, a new application. The new application was a web-app, so there was the usual grunt work involved in getting the shell of a Java web-app started. This is a relatively frustrating task to be pairing on. I'm sure there were difference of opinion but nothing severe, or so I thought. We using a specific web framework that I'd used before, I knew exactly the direction I wanted to move in. I may have jumped in a few times. 
+
+Looking back I was certainly encroaching on my pairs personal space. We weren't communicating effectively and I think we were both becoming increasingly frustrated. 
+
+I don't really know how to describe the outburst that ensued but it shocked me. Totally unexpected and frightening to behold. My pair had some kind of maddening episode, hands waving and shaking. In culminated in me being told strongly to move back (away from the desk and keyboard), I obliged out of complete shock. 
+
+I paired with this person many times more but I never felt comfortable and I never felt I could contribute effectively when working together.
+
+### Attention span
+I don't really have anything to compare it against but it feels like developers as a group have a significant number of minor [ADHD](http://en.wikipedia.org/wiki/Attention_deficit_hyperactivity_disorder) sufferers. It's easy to switch off as the navigator. Play with your smartphone, muck around on your laptop or doodle. You're not being an effective pair!
+
+I think to some extent this is normal, pairing can be exhausting and it's hard to remember to take breaks.
+
+One particular colleague I've paired with had a shorter attention span than most. Thankfully he was easy to approach, open-minded and we get on quite well. I'm not sure which one of us suggested it but we decided to try the [pomodoro](http://www.d80.co.uk/post/2011/06/06/The-Pomodoro-Pairing-Technique.aspx) technique.
+
+A pomodoro (name after the pomodoro tomato kitchen timer) is a fixed period of time in which you cycle roles. For example we set our pomodoro to 20 minutes with a 5 minute switchover between role rotations. So I would drive for 20 minutes, then stop for 5 minutes and then my pair would take over. This seemed to work extremely well. The short time period meant that my pair didn't switch off, he had the 5 minutes ever 20 to play with his phone, show me some cool new article or whatever. It's surprising how disciplined you can be with this simple 20/5 rule. What is also surprising is how engaging and tiring this is. After a full day of this I was completely exhausted. I didn't take any measurements but I'm pretty sure we were a lot more effective, which might seem counter intuitive given your taking a break every 20 minutes. When you actually practice a pomodoro you don't actually take your full break every time. Most of the time you'll be mid way through a task and carry on until a convenient stopping point.
+
+I tried this technique with other members of the team with varying success. It just didn't seem to be everyones cup of tea.
+
+[Ping pong](http://en.wikipedia.org/wiki/Pair_programming#Ping_pong_pair_programming) pairing is a lot more common and also very effective. This also enforces test driven development and writing good small focussed tests.
+
 - Me...
 
 ### Effective managerial tool
