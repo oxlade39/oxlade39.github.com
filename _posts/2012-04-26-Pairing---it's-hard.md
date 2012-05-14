@@ -7,7 +7,7 @@ tags: productivity process system xp extremeprogramming
 ## Background
 For over two years I worked in a team that followed agile processes, including [Extreme Programming](http://www.extremeprogramming.org/). The team is quite large, at a conservative estimate I'd say; maybe 6 sub-teams of 6 cross discipline members. All sub-teams working against the same 2 week cycle from the same plan. Sub-teams are fairly self organised and have their own targets (stories).
 
-Of the 2 teams I was a member, both used [pair programming](http://www.extremeprogramming.org/rules/pair.html) heavily. The first &gt; 90%, the second maybe 75% (I was running the second) of the working day. This is a collection of my thoughts an experiences from that time.
+Of the 2 teams I was a member, both used [pair programming](http://www.extremeprogramming.org/rules/pair.html) heavily. The first &gt; 90%, the second maybe 75% (I was running the second) of the working day. This is a collection of my thoughts and experiences from that time.
 
 ## What is pair programming
 Well, it's very much like it's described in [Extreme Programming](http://www.extremeprogramming.org/rules/pair.html). Two people sit at the same computer, usually with a single mouse and a single keyboard working together to deliver a piece of functionality. If you're lucky you'll have two massive cinema displays and all plugged into a top of the range [Mac Pro](http://store.apple.com/uk/browse/home/shop_mac/family/mac_pro).
@@ -34,12 +34,14 @@ I can tell you my opinion.
 
 I think pairing is hard. It's hard because it's mostly about people, it's a people problem. And people problems are inherently hard.
 
+It's also one of the most effective working practices I've ever used!
+
 ### Why does that make it hard?
-Have you ever booked a holiday with you nan/girlfriend/best friend/close colleague. After about the second day on holiday you discovered that they are a pain in the $£%e to spend all day with. If you picked girlfriend above it's probably time to bail, otherwise I'd say that's pretty normal. On said holiday, did you try and choose a place to eat? For me this is the most frustrating thing and most likely to cause an argument. 
+Have you ever been on holiday with your nan/girlfriend/best friend/close colleague. After about the second day you discovered that they are a pain in the $£%e to spend all day with. If you picked girlfriend above it's probably time to bail, otherwise I'd say that's pretty normal. On said holiday, did you try and choose a place to eat? For me this is the most frustrating thing and most likely to cause an argument. 
 
 You may have a different trigger. 
 
-My point is, even two close people have problems working together on something as relaxing as a holiday. Try putting two average Joes together using several constrained resources and see what happens.
+My point is, even two close people will have problems working together on something as relaxing as a holiday. Try putting two average Joes together, using several constrained resources and see what happens.
 
 To be blunt, people are weird. Well, they are different.
 
@@ -47,30 +49,30 @@ To be blunt, people are weird. Well, they are different.
 When you pair you work very closely. You're sat at the same desk side by side, all day. You're sharing the same physical resources, passing them between each other. People have very different ideas and tolerances about things like personal space and personal habits. 
 
 ### Personal space
-Personal space is something you have to be very careful and considerate of and there are no hard and fast guidelines.
+Personal space is something you have to be very careful and considerate of and there are no hard and fast rules.
 
-The best advice I can give is to be mindful at all times. Keep a check on where you're positioned at the desk and ensure you're not encroaching.
+The best advice I can give is to be mindful at all times. Keep a check on where you're positioned at the desk and ensure you're not encroaching. Most people -myself included- forget this at times.
 
 ### Personal habits
-Some personal habits can be extremely irritating to a pair I'm thinking nose picking and nail biting. Yes those bits do fall between the __shared__ keyboard.
+Some personal habits can be extremely irritating to a pair. I'm thinking nose picking and nail biting. Yes those bits do fall between the __shared__ keyboard.
 
 These are awkward subjects to broach but you just have to mention it. Don't let it build up.
 
 ### Shy
 Everyone has a different level of communication skill. Not everyone is as forthcoming with their opinion as they could be, some are a little too forthcoming. It's all too easy for a quiet person to get detached from the driver and the longer it lasts the more detached (and probably frustrated) they become.
 
-The most important aspect of pairing is the communication, so talk a lot. Make sure the conversation flows. If you're driving and your pair hasn't spoken for a while, ask them what they think about what you're doing. If you are the navigator then ask the driver what they are thinking, how are they intending to solve the current task at hand.
+___The___ most important aspect of pairing is the communication, so talk a lot. Make sure the conversation flows. If you are driving and your pair hasn't spoken for a while, ask them what they think about what you're doing. If you are the navigator then ask the driver what they are thinking, how are they intending to solve the current task at hand.
 
 ### Outbursts
 With differences of opinion, strategy or implementation comes frustration. Outbursts and stern arguments can happen. If these are happening frequently then your team has some problems and they should be addressed. It's always better to talk things through wherever possible.
 
 In my time pairing I have one very memorably experience. It changed the way I thought about conducting myself at work, changed my attitude to pairing and knocked my confidence.
 
-I was pairing on a brand new piece of work, a new application. The new application was a web-app, so there was the usual grunt work involved in getting the shell of a Java web-app started. This is a relatively frustrating task to be pairing on. I'm sure there were difference of opinion but nothing severe, or so I thought. We using a specific web framework that I'd used before, I knew exactly the direction I wanted to move in. I may have jumped in a few times. 
+I was pairing on a brand new piece of work, a new application. The new application was a web-app, so there was the usual grunt work involved in getting the shell of a Java web-app started. This is a relatively frustrating task to be pairing on. I'm sure there were differences of opinion but nothing severe, or so I thought. We were using a specific web framework that I'd used before, I knew exactly the direction I wanted to move in. I may have jumped in a few times. 
 
 Looking back I was certainly encroaching on my pairs personal space. We weren't communicating effectively and I think we were both becoming increasingly frustrated. 
 
-I don't really know how to describe the outburst that ensued but it shocked me. Totally unexpected and frightening to behold. My pair had some kind of maddening episode, hands waving and shaking. In culminated in me being told strongly to move back (away from the desk and keyboard), I obliged out of complete shock. 
+I don't really know how to describe the outburst that ensued but it shocked me. Totally unexpected and frightening to behold. My pair had some kind of maddening episode, hands waving and shaking. It culminated in me being told strongly to move back (away from the desk and keyboard), I obliged out of complete shock. 
 
 I paired with this person many times more but I never felt comfortable and I never felt I could contribute effectively when working together.
 
@@ -81,20 +83,56 @@ I think to some extent this is normal, pairing can be exhausting and it's hard t
 
 One particular colleague I've paired with had a shorter attention span than most. Thankfully he was easy to approach, open-minded and we get on quite well. I'm not sure which one of us suggested it but we decided to try the [pomodoro](http://www.d80.co.uk/post/2011/06/06/The-Pomodoro-Pairing-Technique.aspx) technique.
 
-A pomodoro (name after the pomodoro tomato kitchen timer) is a fixed period of time in which you cycle roles. For example we set our pomodoro to 20 minutes with a 5 minute switchover between role rotations. So I would drive for 20 minutes, then stop for 5 minutes and then my pair would take over. This seemed to work extremely well. The short time period meant that my pair didn't switch off, he had the 5 minutes ever 20 to play with his phone, show me some cool new article or whatever. It's surprising how disciplined you can be with this simple 20/5 rule. What is also surprising is how engaging and tiring this is. After a full day of this I was completely exhausted. I didn't take any measurements but I'm pretty sure we were a lot more effective, which might seem counter intuitive given your taking a break every 20 minutes. When you actually practice a pomodoro you don't actually take your full break every time. Most of the time you'll be mid way through a task and carry on until a convenient stopping point.
+A pomodoro (named after the pomodoro tomato kitchen timer) is a fixed period of time in which you cycle roles. For example: we set our pomodoro to 20 minutes with a 5 minute switchover between role rotations. I would drive for 20 minutes, then stop for 5 minutes, then my pair would take over. 
+
+This seemed to work extremely well. The short time period meant that my pair didn't switch off, he had the 5 minutes ever 20 to play with his phone, show me some cool new article or whatever. It's surprising how disciplined you can be with this simple 20/5 rule. What is also surprising is how engaging and tiring this is. After a full day of this I was completely exhausted. I didn't take any measurements but I'm pretty sure we were a lot more effective, which might seem counter intuitive given your taking a break every 20 minutes. When you actually practice a pomodoro you don't take your full break every time. Most of the time you'll be mid way through a task and carry on until a convenient stopping point.
 
 I tried this technique with other members of the team with varying success. It just didn't seem to be everyones cup of tea.
 
 [Ping pong](http://en.wikipedia.org/wiki/Pair_programming#Ping_pong_pair_programming) pairing is a lot more common and also very effective. This also enforces test driven development and writing good small focussed tests.
 
-- Me...
+### Me
+I'm certainly different too. I'm sure people I've paired have at some stage or another been irritated and angered by my actions. I know one person has...
+
+## One of the most effective working practices I've ever used!
+So far you've not read many positive points. It is not my intention to focus on the negative. I think pairing is one of the most effective working practices I've ever used.
+
+### Consistency
+It's surprising how fussy developers are about small stylistic things. When you're pairing you get picked up on style __a lot__, this tends to drive discussion within the team. I think this is probably the best way to decide on your code formatting/styling rules, in fact it's probably the best way to make all decisions concerning the code you write. Not top down, architecture overlord driven rules that were written and never justified eons ago.
+
+It's not just style it's things like the acceptable length of class/method names/bodies, third party dependencies, common patterns etc, etc.
+
+Just generally, your code tends to be more consistent. Many discussions have already been had about why the code is the way it is and they've been had at the time of writing and then the time of refactoring, over and over.
+
+### Learning
+One of the often cited benefits of pairing is the improvement in knowledge sharing.
+
+Pairing is without a doubt the fastest way to bring someone new up to speed with your project. When have you on-boarded a new developer, pointed them at your documentation, done a couple of hours walkthrough and then given them a couple of weeks/months worth of beginner/learner tasks to ease them in gently?
+
+When I joined a team that was pairing fully, I was coding on real user stories from day one. That code was shipped two weeks later and had real business benefit.
+
+You're instantly and constantly learning from your pair. You don't feel uncomfortable to ask questions and you can provide valuable input with the safety-net of an experienced pair to protect you from doing something you shouldn't.
+
+You don't just learn about the business domain either, you pick up new technical skills. Switching to IntelliJ was a doddle, learning x/y/z framework, productivity tips, outside of work interests they're all things you pick up easier when you pair.
 
 ### Effective managerial tool
+I mean this in the very crudest form of people management. Making sure everyone is doing what they are meant to be doing.
+
+When I'm pairing, I spend a lot more time doing 'what I'm meant to be doing' than when I'm not. By this I mean when I'm solo I tend to go through spells of high focus, red-green-refactor wash, rinse and repeat, and spells of floundering unproductively. I can't put my finger on why the unproductive spells happen but I think it's something to do with an unclear direction. These spells tend to be slow and disrupted by frequent browsing of [bbc news](www.bbc.co.uk/news) or [hacker news](news.ycombinator.com). I don't think I'm an especially lazy worker, I suspect it's more about the [system](http://en.wikipedia.org/wiki/Systems_thinking) I'm working in. I don't know for sure but I think this is common.
+
+When pairing, there is much more focus. I think it's the increased intellectual stimulation mixed with the increased pressure of someone looking over your shoulder at every point. In a way your pair is probably the best manager you could hope for. They know exactly what you're working on, what you've achieved, what you need help with, they are easy to talk to and have a similar background to you.
+
+If I was managing a large (or small) team they would definitely be pairing. I know they would be more effective and I know they would be shipping higher __quality code, faster__.
 
 ### When pairing is ineffective
+There are times when I definitely don't feel as effective pairing. Unfortunately they tend to be the tedious, repetitive tasks that you really aren't meant to come across if you're doing stuff the _'right way'_. Tasks like massive renames, find and replaces, refactors that touch almost every class in your codebase, debugging and investigative bug fixing. Most of these tasks simply don't benefit from two people pairing on them. You could simply do them quicker if you split up and did them in parallel. Although saying that, the above observation about time wasting does apply.
+
+Debugging and investigative bug fixing is a slightly special case, you do benefit from having two minds working on the problem but it can be extremely frustrating. I find people tend to change modes when debugging. They want to inspect every variable, they want to take a different code branch to you and they jump to wild, distracting conclusions at any given point, usually when you're deep in thought. I just want to lock myself in a room and bash my head against the keyboard until the problem is resolved.
 
 ### Once you've paired
-- You change
+When you're pairing the majority of the time, you change your perspective. You tend to ask a lot more questions and seek code reviews more often. I went through a phase of feeling slightly uneasy about checking in code that other people hadn't seen.
+
+I wouldn't go as far as saying you become a more social person but you do start to depend 
 
 ### Why I hated it
 - 100%
