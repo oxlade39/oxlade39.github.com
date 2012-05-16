@@ -102,37 +102,62 @@ body {
 	<div class="span8">
 		<div class="row-fluid">	
 	<div class="span11 well">
-		<h2 class="post">Jekyll, Github, Plugins and automated deployment</h1>
-		<div><p><a href='https://github.com/mojombo/jekyll'>Jekyll</a> provides extension points via <a href='https://github.com/mojombo/jekyll/wiki/Plugins'>plugins</a>. Allowing you to create custom content and enrich the document generation model.</p>
+		<h2 class="post">Hosting a Maven repository on Github</h1>
+		<div><h3 id='host_your_own'>Host your own</h3>
 
-<p>Unfortunately if you&#8217;re deploying your site to <a href='http://pages.github.com/'>Github pages</a> these plugins aren&#8217;t supported. Specifically, Github generates your site using the <code>--safe</code> Jekyll <a href='https://github.com/mojombo/jekyll/wiki/Configuration'>configuration</a> flag.</p>
+<p>There seem to be a few options open to you if you want to share your maven/ivy managed dependency. I&#8217;d quite like the simplicity of having my own repository. Since most of my development is done on <a href='github.com'>github</a> I&#8217;d like to host my maven repository there.</p>
 
-<p>I found a couple of posts on how other people get around this; <a href='http://ilkka.github.com/blog/2010/11/20/hosting-a-jekyll-blog-with-extensions-on-github/'>this</a> one being the most helpful. However I couldn&#8217;t get any of them to work.</p>
+<h3 id='hosting_on_github_pages'>Hosting on github pages</h3>
 
-<p>The standard approach appears to be to create a branch (say <code>source</code>) and then add a <a href='http://book.git-scm.com/5_submodules.html'>git submodule</a> which references your remote master, making Jekyll generate your site to the submodule directory.</p>
+<p>Github allows you to host static websites on it&#8217;s servers. <a href='http://pages.github.com/'>Github pages</a>.</p>
 
-<p>Jekyll, when generating your site, clobbers the <code>_site/.git</code> directory each time it generates the content. This means your git submodule is destroyed and seems to render the whole process void.</p>
+<p>Since a maven repository is really just a formalised directory structure, you can check this into github.</p>
 
-<p>After a bit longer scouring the web I decided I&#8217;d just script up a process that would work for me based on the above submodule.</p>
+<ul>
+<li>Set up your <a href='http://pages.github.com/'>Github pages</a>, you can do this as a branch (<code>gh-pages</code>) of an existing repository or as your main github user page (<code>username.github.com</code>). Clone this repository locally. I cloned to <code>~/proj/project-name-gh-pages</code>.</li>
 
-<p>I was pretty fed up of being sidetracked at this point so I took the pragmatic approach and hacked together a <a href='http://rake.rubyforge.org/files/doc/rakefile_rdoc.html'>rakefile</a> to script my process. The full deploy to github phase goes as follows:</p>
+<li>Create a subdirectory <code>maven</code> to separate the repository from the rest of your site.</li>
 
-<ol>
-<li>Clean all previously generated content (<code>rm -rf ./_site2/</code>)</li>
+<li>Use your favourite build tool to <code>deploy</code> to <code>~/proj/project-name-gh-pages/maven</code></li>
+</ul>
 
-<li>Reset the git submodule (<code>./_site2</code>) to a clean state</li>
+<p>Now you&#8217;ll have a perfectly valid maven repository at ~/proj/project-name-gh-pages/maven. If you were to check this in and push to github, those files would be available on github. Unfortunately this won&#8217;t work with maven yet&#8230;</p>
 
-<li>Run Jekyll to generate the site, but configured to generate content to <code>./_site2/</code></li>
+<h3 id='creating_your_indices'>Creating your indices</h3>
 
-<li>Copy all generated content to the submodule (<code>./_site</code>)</li>
+<p>At this point I should credit <a href='https://github.com/mpeltonen'>mpeltonen</a> and his <a href='https://github.com/mpeltonen/sbt-idea'>sbt-idea</a> SBT plugin. I knew he&#8217;d deployed this to his own repository on github so I looked at his code to find out how&#8230;</p>
 
-<li>Commit and push the submodule to github, publishing your generated site</li>
+<p>I got to the point above and then realised <a href='https://github.com/mpeltonen'>Mikko</a> was using a <a href='https://github.com/mpeltonen/mpeltonen.github.com/blob/master/GenerateIndeces.scala'>script</a> to recurse his repository directories and generate an <code>index.html</code> for each directory.</p>
 
-<li>Commit from the root of your project in your current branch (not <code>master</code>). This just ensures your submodule continues to point to the remote <code>master</code></li>
-</ol>
+<p>So that&#8217;s the trick, you need an <code>index.html</code> in each directory, listing the files and subdirectories in that directory. I guess github isn&#8217;t set up to list those by default.</p>
 
-<p>And here is the rakefile.</p>
-<script src='https://gist.github.com/2431288.js'> </script></div>	
+<h3 id='doing_it_yourself'>Doing it yourself</h3>
+
+<p>You could use <a href='https://github.com/mpeltonen/mpeltonen.github.com/blob/master/GenerateIndeces.scala'>Mikko&#8217;s script</a>. I was writing an SBT plugin so I thought I might as well write the behaviour into my <a href='https://github.com/oxlade39/ostrich-dist-plugin'>plugin</a>, so it could deploy itself</p>
+
+<p>So I added it to my <a href='https://github.com/oxlade39/ostrich-dist-plugin/blob/master/src/main/scala/org/doxla/sbt/ostrich/dist/GithubPagesMavenPublish.scala'>SBT plugin</a>, allowing me to deploy my maven artefacts to a local directory and then create the <code>index.html</code> files in each directory. You can also reuse this, like so:</p>
+
+<p><code>build.sbt</code></p>
+<div class='highlight'><pre><code class='scala'><span class='n'>seq</span><span class='o'>(</span><span class='n'>githubPagesMavenPublishSettings</span><span class='k'>:</span> <span class='k'>_</span><span class='kt'>*</span><span class='o'>)</span>
+
+<span class='n'>githubPagesCheckoutDir</span> <span class='o'>:=</span> <span class='nc'>Path</span><span class='o'>.</span><span class='n'>userHome</span> <span class='o'>/</span> <span class='s'>&quot;proj&quot;</span> <span class='o'>/</span> <span class='s'>&quot;project-name-gh-pages&quot;</span> <span class='o'>/</span> <span class='s'>&quot;maven&quot;</span>
+
+<span class='n'>publishMavenStyle</span> <span class='o'>:=</span> <span class='kc'>true</span>
+</code></pre>
+</div>
+<p>with the following in your <code>project/plugins.sbt</code>:</p>
+<div class='highlight'><pre><code class='scala'><span class='n'>resolvers</span> <span class='o'>+=</span> <span class='s'>&quot;oxlade39 github ostrich&quot;</span> <span class='n'>at</span> <span class='s'>&quot;http://oxlade39.github.com/ostrich-dist-plugin/maven/&quot;</span>
+
+<span class='n'>addSbtPlugin</span><span class='o'>(</span><span class='s'>&quot;org.doxla&quot;</span> <span class='o'>%</span> <span class='s'>&quot;ostrich-dist&quot;</span> <span class='o'>%</span> <span class='s'>&quot;0.3&quot;</span><span class='o'>)</span>
+</code></pre>
+</div>
+<p>Once you&#8217;ve added the above to your build, running an <code>sbt publish</code> will publish your project artefacts to <code>~/proj/project-name-gh-pages/maven</code> with an <code>index.html</code> in each directory. You can now commit and push to github:</p>
+<div class='highlight'><pre><code class='bash'><span class='nb'>cd</span> ~/proj/project-name-gh-pages/maven
+git co -m <span class='s2'>&quot;publishing latest version of project-name&quot;</span>
+git push origin gh-pages
+</code></pre>
+</div>
+<p>At this point your maven repository will be live.</p></div>	
 	</div>
 </div> <!-- // end post layout -->
 <div class="row-fluid">
@@ -147,7 +172,7 @@ body {
         <script type="text/javascript">
             /* * * CONFIGURATION VARIABLES: EDIT BEFORE PASTING INTO YOUR WEBPAGE * * */
           var disqus_developer = 0; // 1 = developer mode is on
-          var disqus_identifier = '/blogging/2012/04/20/Jekyll%2C-Github%2C-Plugins-and-automated-deployment.html';
+          var disqus_identifier = '/productivity/2012/04/25/Hosting-a-Maven-repository-on-Github.html';
           var disqus_shortname = 'codingaddickt';
           (function() {
               var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;

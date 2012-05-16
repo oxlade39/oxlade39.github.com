@@ -60,10 +60,8 @@ body {
 		    
 		      
 		      
-		        
-		      
 
-		      <li class="active">
+		      <li class="">
 		        <a href="/blog/index.html">Blog</a>
 		      </li>
 		    
@@ -100,66 +98,23 @@ body {
 			<div class="span12">
 				<div class="row-fluid">
 	<div class="span8">
-		<div class="row-fluid">	
-	<div class="span11 well">
-		<h2 class="post">Jekyll, Github, Plugins and automated deployment</h1>
-		<div><p><a href='https://github.com/mojombo/jekyll'>Jekyll</a> provides extension points via <a href='https://github.com/mojombo/jekyll/wiki/Plugins'>plugins</a>. Allowing you to create custom content and enrich the document generation model.</p>
-
-<p>Unfortunately if you&#8217;re deploying your site to <a href='http://pages.github.com/'>Github pages</a> these plugins aren&#8217;t supported. Specifically, Github generates your site using the <code>--safe</code> Jekyll <a href='https://github.com/mojombo/jekyll/wiki/Configuration'>configuration</a> flag.</p>
-
-<p>I found a couple of posts on how other people get around this; <a href='http://ilkka.github.com/blog/2010/11/20/hosting-a-jekyll-blog-with-extensions-on-github/'>this</a> one being the most helpful. However I couldn&#8217;t get any of them to work.</p>
-
-<p>The standard approach appears to be to create a branch (say <code>source</code>) and then add a <a href='http://book.git-scm.com/5_submodules.html'>git submodule</a> which references your remote master, making Jekyll generate your site to the submodule directory.</p>
-
-<p>Jekyll, when generating your site, clobbers the <code>_site/.git</code> directory each time it generates the content. This means your git submodule is destroyed and seems to render the whole process void.</p>
-
-<p>After a bit longer scouring the web I decided I&#8217;d just script up a process that would work for me based on the above submodule.</p>
-
-<p>I was pretty fed up of being sidetracked at this point so I took the pragmatic approach and hacked together a <a href='http://rake.rubyforge.org/files/doc/rakefile_rdoc.html'>rakefile</a> to script my process. The full deploy to github phase goes as follows:</p>
-
-<ol>
-<li>Clean all previously generated content (<code>rm -rf ./_site2/</code>)</li>
-
-<li>Reset the git submodule (<code>./_site2</code>) to a clean state</li>
-
-<li>Run Jekyll to generate the site, but configured to generate content to <code>./_site2/</code></li>
-
-<li>Copy all generated content to the submodule (<code>./_site</code>)</li>
-
-<li>Commit and push the submodule to github, publishing your generated site</li>
-
-<li>Commit from the root of your project in your current branch (not <code>master</code>). This just ensures your submodule continues to point to the remote <code>master</code></li>
-</ol>
-
-<p>And here is the rakefile.</p>
-<script src='https://gist.github.com/2431288.js'> </script></div>	
+		
+	<div class="row-fluid">
+		<div class="span11 well">
+    		<div>25 Apr 2012</div>
+    		<h2><a href="/productivity/2012/04/25/Hosting-a-Maven-repository-on-Github.html">Hosting a Maven repository on Github</a></h2>
+    		<div class="tags"><b>Tags:</b> scala, sbt, productivity, build, maven, ivy, lessons, and github</div>
+		</div>
 	</div>
-</div> <!-- // end post layout -->
-<div class="row-fluid">
-	<div class="span11">
-		<a href="https://twitter.com/share" class="twitter-share-button" data-via="doxla">Tweet</a>
-		<script>!function(d,s,id){var js,fjs=d.getElementsByTagName(s)[0];if(!d.getElementById(id)){js=d.createElement(s);js.id=id;js.src="//platform.twitter.com/widgets.js";fjs.parentNode.insertBefore(js,fjs);}}(document,"script","twitter-wjs");</script>
-	</div>
-</div>
-<div class="row-fluid">
-	<div class="span11">
-		        <div id="disqus_thread"></div>
-        <script type="text/javascript">
-            /* * * CONFIGURATION VARIABLES: EDIT BEFORE PASTING INTO YOUR WEBPAGE * * */
-          var disqus_developer = 0; // 1 = developer mode is on
-          var disqus_identifier = '/blogging/2012/04/20/Jekyll%2C-Github%2C-Plugins-and-automated-deployment.html';
-          var disqus_shortname = 'codingaddickt';
-          (function() {
-              var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
-              dsq.src = 'http://' + disqus_shortname + '.disqus.com/embed.js';
-              (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
-          })();
-        </script>
-        <noscript>Please enable JavaScript to view the <a href="http://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
-        <a href="http://disqus.com" class="dsq-brlink">blog comments powered by <span class="logo-disqus">Disqus</span></a>
 
+	<div class="row-fluid">
+		<div class="span11 well">
+    		<div>23 Apr 2012</div>
+    		<h2><a href="/productivity/2012/04/23/Writing-an-sbt-plugin.html">Writing an sbt 0.11.x plugin</a></h2>
+    		<div class="tags"><b>Tags:</b> scala, sbt, productivity, build, maven, ivy, and lessons</div>
+		</div>
 	</div>
-</div>
+
 	</div>
 	<div class="span4">
 		<div class="row-fluid">
