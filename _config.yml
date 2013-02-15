@@ -1,0 +1,51 @@
+dev_mode: '0'
+destination: '_site2'
+paginate: 20
+pygments: true
+blog_title: 'Coding Addickt'
+nav_items:
+    - Home
+    - Blog
+    - About
+    - Contact
+    
+navigation:
+- text: Home
+  url: /index.html
+- text: Blog
+  url: /blog/index.html
+  group: blog
+- text: Photography
+  url: /photography.html
+- text: About Me
+  url: /aboutMe.html
+- text: About This Site
+  url: /aboutSite.html
+    
+flickr:
+ photos:
+     - href: http://www.flickr.com/photos/danoxlade/6309632873/lightbox/
+       src: http://farm7.staticflickr.com/6236/6309632873_99a0205baf.jpg
+       title: The Eiffel Tower at night
+       description: October 2011, I proposed to Laura here.
+     - href: http://www.flickr.com/photos/danoxlade/3319536904/lightbox/
+       src: http://farm4.staticflickr.com/3576/3319536904_2e51135402.jpg     
+       title: Greenwich foot tunnel
+       description: The crossing from the Isle of Dogs to Greenwich, near where we used to live.
+     - href: http://www.flickr.com/photos/danoxlade/6335498532/
+       src: http://farm7.staticflickr.com/6054/6335498532_d338df70bb.jpg
+       title: Green Bay, Ireland
+       description: August 2011, Ireland road trip
+     - href: http://www.flickr.com/photos/danoxlade/3247449773/sizes/m/in/set-72157613276980012/
+       src: http://farm4.staticflickr.com/3124/3247449773_f1bb9ec7f5.jpg
+       title: Masked Boobie on the cliffs
+       description: November 2008, The Galapagos Islands       
+     - href: http://www.flickr.com/photos/danoxlade/3327177186/in/set-72157614547215593/lightbox/
+       src: http://farm4.staticflickr.com/3632/3327177186_7ffeece3c5.jpg
+       title: Active volcano Salar de Uyuni
+       description: This had puffs of smoke coming out of the crator. Taken on the 4 day Salar de Uyuni dessert crossing       
+     - href: http://www.flickr.com/photos/danoxlade/3238551837/lightbox/
+       src: http://farm4.staticflickr.com/3417/3238551837_3f812c9c0c.jpg
+       title: Spike-headed Katydid (Panacanthus cuspidatus)
+       description: November 2008, Amazonian Equador
+     
